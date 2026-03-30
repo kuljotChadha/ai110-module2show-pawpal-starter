@@ -36,7 +36,6 @@ pip install -r requirements.txt
 
 <a href="/course_images/ai110/pawpal_screenshot.png" target="_blank"><img src='/course_images/ai110/pawpal_screenshot.png' title='PawPal App' width='' alt='PawPal App' class='center-block' /></a>
 
-> To add your screenshot: run `streamlit run app.py`, take a screenshot, save it as `pawpal_screenshot.png` in your project folder, and update the path above.
 
 ## Features
 

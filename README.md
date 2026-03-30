@@ -32,6 +32,52 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+## 📸 Demo
+
+<a href="/course_images/ai110/pawpal_screenshot.png" target="_blank"><img src='/course_images/ai110/pawpal_screenshot.png' title='PawPal App' width='' alt='PawPal App' class='center-block' /></a>
+
+> To add your screenshot: run `streamlit run app.py`, take a screenshot, save it as `pawpal_screenshot.png` in your project folder, and update the path above.
+
+## Features
+
+- **Owner & pet setup** — register an owner with a daily time budget and any number of pets
+- **Task management** — add tasks per pet with title, duration, priority, scheduled time, and recurrence
+- **Time-sorted schedule** — daily plan ordered chronologically with budget enforcement
+- **Priority color-coding** — 🔴 High / 🟡 Medium / 🟢 Low at a glance
+- **Conflict detection** — flags tasks sharing the same start time with actionable warnings
+- **Recurring tasks** — daily/weekly tasks auto-generate their next occurrence on completion
+- **Next available slot** — finds the earliest free time slot for a new task
+- **Priority-first scheduling** — optional schedule sorted by priority then time
+- **JSON persistence** — save and reload all pets and tasks between sessions
+
+## Smarter Scheduling
+
+PawPal+ goes beyond a simple task list with these built-in algorithms:
+
+- **Time-sorted schedule** — tasks are ordered chronologically (HH:MM) so the daily plan reads like a real timeline.
+- **Daily budget enforcement** — the scheduler only adds tasks until the owner's available minutes are used up; lower-priority tasks that don't fit are silently deferred.
+- **Recurring task automation** — marking a `daily` or `weekly` task complete automatically generates the next occurrence with the correct due date using Python's `timedelta`.
+- **Conflict detection** — the scheduler scans for tasks with identical scheduled times and returns plain-language warnings rather than crashing.
+- **Filtering** — tasks can be filtered by pet name and/or completion status, making it easy to see what's still pending for a specific pet.
+
+## Testing PawPal+
+
+Run the automated test suite with:
+
+```bash
+python -m pytest
+```
+
+Tests cover:
+
+- **Task completion** — `mark_complete()` correctly flips `is_complete` to `True`
+- **Task addition** — adding a task to a `Pet` increases its task count
+- **Sorting correctness** — tasks are returned in chronological order
+- **Recurrence logic** — marking a daily task complete creates a new task for the following day
+- **Conflict detection** — the Scheduler correctly flags two tasks at the same time
+
+**Confidence level: ⭐⭐⭐⭐ (4/5)** — core behaviors are verified; overlap-duration conflicts and edge cases (empty pets, budget of 0) would be the next test targets.
+
 ### Suggested workflow
 
 1. Read the scenario carefully and identify requirements and edge cases.

@@ -1,0 +1,11 @@
+{
+  "name": "Kuljot",
+  "available_minutes_per_day": 120,
+  "pets": [
+    {
+      "name": "k",
+      "species": "cat",
+      "tasks": []
+    }
+  ]
+}

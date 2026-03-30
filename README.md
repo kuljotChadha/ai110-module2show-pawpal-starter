@@ -32,22 +32,13 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## 📸 Demo
+## Agent Mode Usage
 
-<a href="/course_images/ai110/pawpal_screenshot.png" target="_blank"><img src='/course_images/ai110/pawpal_screenshot.png' title='PawPal App' width='' alt='PawPal App' class='center-block' /></a>
+Several bonus features were implemented using Agent Mode (multi-step AI-assisted implementation across files):
 
-
-## Features
-
-- **Owner & pet setup** — register an owner with a daily time budget and any number of pets
-- **Task management** — add tasks per pet with title, duration, priority, scheduled time, and recurrence
-- **Time-sorted schedule** — daily plan ordered chronologically with budget enforcement
-- **Priority color-coding** — 🔴 High / 🟡 Medium / 🟢 Low at a glance
-- **Conflict detection** — flags tasks sharing the same start time with actionable warnings
-- **Recurring tasks** — daily/weekly tasks auto-generate their next occurrence on completion
-- **Next available slot** — finds the earliest free time slot for a new task
-- **Priority-first scheduling** — optional schedule sorted by priority then time
-- **JSON persistence** — save and reload all pets and tasks between sessions
+- **Next available slot** — Agent Mode was used to design `Scheduler.find_next_available_slot()`: it scans from 07:00 in 30-minute increments, checks occupied times across all pets, and returns the first free slot. The agent also updated `app.py` to pre-fill the time input with the suggested slot.
+- **JSON persistence** — Agent Mode orchestrated changes across both `pawpal_system.py` (adding `to_dict`/`from_dict` to `Task` and `Pet`, and `save_to_json`/`load_from_json` to `Owner`) and `app.py` (loading from `data.json` on startup, auto-saving on every mutation).
+- **Priority-based scheduling** — Agent Mode added `build_priority_schedule()` to `Scheduler` and wired a radio toggle in the UI so the user can switch between chronological and priority-first modes.
 
 ## Smarter Scheduling
 
